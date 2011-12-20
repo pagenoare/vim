@@ -2,7 +2,7 @@
 
 if has("gui_running")
     "Fullscreen"
-    set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
+    set guifont=Terminus\ 8
     set guioptions=-L
     colorscheme wombat
     set guioptions-=l
@@ -20,8 +20,9 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-
-colorscheme darkvim
+set t_Co=256
+"colorscheme 256-jungle
+colorscheme jellybeans
 set nocompatible
 set backspace=indent,eol,start
 set ruler
@@ -53,10 +54,5 @@ syntax on
 " run program by using c-i
 nmap    <C-i> :! python %<CR>
 
-imap <buffer><C-Tab> <M-/>
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
-
 " = END KEY BINDINGS = "
+
