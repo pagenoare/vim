@@ -1,10 +1,26 @@
-" === GVIM === "
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/seoul256.vim'
+Plug 'whatyouhide/vim-gotham'
+Plug 'scrooloose/nerdtree'
+Plug 'ervandew/supertab'
+Plug 'davidhalter/jedi-vim'
+Plug 'bling/vim-airline'
+Plug 'nvie/vim-flake8'
+Plug 'tpope/vim-fugitive'
+Plug 'kien/ctrlp.vim'
+Plug 'groenewege/vim-less'
+Plug 'mileszs/ack.vim'
+Plug 'vsushkov/nerdtree-ack'
+Plug 'majutsushi/tagbar'
+Plug 'szw/vim-tags'
+
+call plug#end()
 
 if has("gui_running")
     "Fullscreen"
-    set guifont=Terminus\ 8
+    set guifont=Literation\ Mono\ Powerline\ 7
     set guioptions=-L
-    colorscheme wombat
     set guioptions-=l
     set guioptions-=L
     set guioptions-=m
@@ -13,16 +29,8 @@ if has("gui_running")
     set guioptions-=r
 endif
 
+colorscheme seoul256
 
-" === END GVIM === "
-
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
-set t_Co=256
-"colorscheme 256-jungle
-colorscheme jellybeans
 set nocompatible
 set backspace=indent,eol,start
 set ruler
@@ -42,17 +50,9 @@ set noswapfile
 set nolist
 set colorcolumn=80
 
-filetype plugin on
-filetype indent on
-let ropevim_vim_completion=1
+let NERDTreeIgnore = ['\.pyc$']
+let g:airline_powerline_fonts = 1
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#use_splits_not_buffers = "right"
 
-syntax on
-
-
-" = KEY BINDINGS = "
-
-" run program by using c-i
-nmap    <C-i> :! python %<CR>
-
-" = END KEY BINDINGS = "
-
+nmap <leader>b :CtrlPMixed<cr>
