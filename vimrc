@@ -14,12 +14,14 @@ Plug 'mileszs/ack.vim'
 Plug 'vsushkov/nerdtree-ack'
 Plug 'majutsushi/tagbar'
 Plug 'szw/vim-tags'
+Plug 'w0ng/vim-hybrid'
+Plug 'mhinz/vim-signify'
 
 call plug#end()
 
 if has("gui_running")
     "Fullscreen"
-    set guifont=Literation\ Mono\ Powerline\ 7
+    set guifont=Sauce\ Code\ Powerline\ 7
     set guioptions=-L
     set guioptions-=l
     set guioptions-=L
@@ -29,7 +31,7 @@ if has("gui_running")
     set guioptions-=r
 endif
 
-colorscheme seoul256
+colorscheme hybrid
 
 set nocompatible
 set backspace=indent,eol,start
@@ -52,8 +54,21 @@ set colorcolumn=80
 
 let NERDTreeIgnore = ['\.pyc$']
 let g:airline_powerline_fonts = 1
+autocmd FileType python setlocal completeopt-=preview
+
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#use_splits_not_buffers = "right"
 
+let g:signity_vcs_list = ['git', 'hg']
+
 nmap <leader>b :CtrlPMixed<cr>
 nmap <F8> :TagbarToggle<CR>
+
+:python << EOF
+import os
+virtualenv = os.environ.get('VIRTUAL_ENV')
+if virtualenv:
+    activate_this = os.path.join(virtualenv, 'bin', 'activate_this.py')
+    if os.path.exists(activate_this):
+        execfile(activate_this, dict(__file__=activate_this))
+EOF
