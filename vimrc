@@ -1,7 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/seoul256.vim'
-Plug 'whatyouhide/vim-gotham'
 Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
 Plug 'davidhalter/jedi-vim'
@@ -16,6 +14,7 @@ Plug 'majutsushi/tagbar'
 Plug 'szw/vim-tags'
 Plug 'w0ng/vim-hybrid'
 Plug 'mhinz/vim-signify'
+Plug 'alfredodeza/coveragepy.vim'
 
 call plug#end()
 
@@ -58,11 +57,13 @@ autocmd FileType python setlocal completeopt-=preview
 
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#use_splits_not_buffers = "right"
+let g:jedi#show_call_signatures = 0
 
 let g:signity_vcs_list = ['git', 'hg']
 
 nmap <leader>b :CtrlPMixed<cr>
-nmap <F8> :TagbarToggle<CR>
+nmap <F2> :NERDTreeToggle<cr>
+nmap <F8> :TagbarToggle<cr>
 
 :python << EOF
 import os
